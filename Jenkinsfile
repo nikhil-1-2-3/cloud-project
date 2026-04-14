@@ -5,26 +5,26 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-               git branch: 'main', url: 'https://github.com/nikhil-1-2-3/cloud-project.git'
+                git branch: 'main', url: 'https://github.com/nikhil-1-2-3/cloud-project.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t cloud-frontend .'
+                bat 'docker build -t cloud-frontend .'
             }
         }
 
         stage('Stop Old Container') {
             steps {
-                sh 'docker stop cloud-frontend || true'
-                sh 'docker rm cloud-frontend || true'
+                bat 'docker stop cloud-frontend || exit 0'
+                bat 'docker rm cloud-frontend || exit 0'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 3000:80 --name cloud-frontend cloud-frontend'
+                bat 'docker run -d -p 3000:80 --name cloud-frontend cloud-frontend'
             }
         }
 
