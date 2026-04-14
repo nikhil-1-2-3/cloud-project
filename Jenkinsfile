@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/nikhil-1-2-3/cloud-project.git'
+               git branch: 'main', url: 'https://github.com/nikhil-1-2-3/cloud-project.git'
             }
         }
 
