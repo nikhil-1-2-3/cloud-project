@@ -24,7 +24,7 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 3000:3000 --name cloud-frontend cloud-frontend'
+                bat 'docker run -d -p 3000:80 --name cloud-frontend cloud-frontend'
             }
         }
 
